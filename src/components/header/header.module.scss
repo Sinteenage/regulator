@@ -1,5 +1,39 @@
 @import '../../styles/variables.scss';
 
 .header {
-    
+    position: relative;
+    width: 100%;
+    height: 50px;
+    padding: 0px 50px;
+    background: $color-bg-variant;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+
+    @include breakpoint(md) {
+        padding: 0px 5px;
+    }
+
+    &__title {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        color: $color-text;
+        font-size: $font-size-big;
+        font-weight: $font-weight-big;
+    }
+
+    &__subtitle {
+        width: 40%;
+        height: 50px;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        overflow: hidden;
+        color: $color-text;
+        font-size: $font-size-medium;
+        font-weight: $font-weight-medium;
+        line-height: 18px;
+        word-wrap: break-word;
+    }
 }

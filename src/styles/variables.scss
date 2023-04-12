@@ -2,10 +2,31 @@
 
 $poppins: 'Poppins', sans-serif;
 
+$color-bg: rgb(0, 94, 126);
+$color-bg-variant: rgb(0, 65, 99);
+$color-primary: rgb(9, 116, 152);
+$color-primary-variant: rgb(20, 149, 192);
+$color-text: #45cfd6;
+$color-light: rgba(255, 255, 255, 0.7);
+
+$image-bg: radial-gradient(
+        farthest-corner at 100% 40px,
+        rgb(255, 255, 255) 10%,
+        rgb(0, 175, 202) 50%
+    );
+
+$font-size-big: 28px;
+$font-size-medium: 16px;
+$font-size-small: 12px;
+
+$font-weight-big: 500;
+$font-weight-medium: 300;
+$font-weight-small: 200;
+
 @mixin breakpoint($point) {
-    @if ($point == md) {
-        @media (min-width: 780px) {
-            @content
+    @if $point == md {
+        @media (max-width: 780px) {
+            @content;
         }
     }
 }
