@@ -28,6 +28,7 @@ type GLTFResult = GLTF & {
         Default: THREE.MeshStandardMaterial;
         ['Reduktor-Red']: THREE.MeshStandardMaterial;
         ['Obv-Red1']: THREE.MeshStandardMaterial;
+        ['Kran-Alum-Red']: THREE.MeshStandardMaterial;
     };
 };
 
@@ -46,6 +47,9 @@ export function Controller(props: JSX.IntrinsicElements['group']) {
 
     materials['Obv-Red1'].roughness = 0.2;
     materials['Obv-Red1'].metalness = 0.8;
+
+    materials['Kran-Alum-Red'].roughness = 0.1;
+    materials['Kran-Alum-Red'].metalness = 0.9;
 
     return (
         <group {...props} dispose={null}>
@@ -151,19 +155,19 @@ export function Controller(props: JSX.IntrinsicElements['group']) {
                     castShadow
                     receiveShadow
                     geometry={nodes.Cylinder01_1.geometry}
-                    material={nodes.Cylinder01_1.material}
+                    material={materials['Kran-Alum-Red']}
                 />
                 <mesh
                     castShadow
                     receiveShadow
                     geometry={nodes.Cylinder01_2.geometry}
-                    material={nodes.Cylinder01_2.material}
+                    material={materials['Kran-Alum-Red']}
                 />
                 <mesh
                     castShadow
                     receiveShadow
                     geometry={nodes.Cylinder01_3.geometry}
-                    material={nodes.Cylinder01_3.material}
+                    material={materials['Kran-Alum-Red']}
                 />
             </group>
             <mesh

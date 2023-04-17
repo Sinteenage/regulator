@@ -6,6 +6,14 @@ import { Environment, OrbitControls, PerspectiveCamera, useEnvironment} from '@r
 import { Controller } from './regilator/Controller';
 import { Pipes } from './regilator/Pipes';
 import { Corpus } from './regilator/Corpus';
+import { BackCup } from './regilator/BackCup';
+import { Bolts } from './regilator/Bolts';
+import { FrontCup } from './regilator/FrontCup';
+import { Laying } from './regilator/Laying';
+import { Reduckt } from './regilator/Reduckt';
+import { Screw } from './regilator/Screw';
+import { ScrewBack } from './regilator/ScrewBack';
+import { ThreadCup } from './regilator/ThreadCup';
 
 export const Scene: React.FC = () => {
     const envMap = useEnvironment({files: '/assets/textures/boiler_room_1k.hdr'});
@@ -26,6 +34,14 @@ export const Scene: React.FC = () => {
                 <Controller/>
                 <Pipes/>
                 <Corpus/>
+                <BackCup/>
+                <Bolts/>
+                <FrontCup/>
+                <Laying/>
+                <Reduckt/>
+                <Screw/>
+                <ScrewBack/>
+                <ThreadCup/>
             </Canvas>
         </Suspense>
     );
