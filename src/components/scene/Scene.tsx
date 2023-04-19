@@ -1,26 +1,30 @@
 import React, { Suspense } from 'react';
-
 import { Canvas } from '@react-three/fiber';
-import { Environment, OrbitControls, PerspectiveCamera, useEnvironment} from '@react-three/drei';
+import { Environment, OrbitControls, PerspectiveCamera, useEnvironment } from '@react-three/drei';
 
-import { Controller } from './regilator/Controller';
-import { Pipes } from './regilator/Pipes';
-import { Corpus } from './regilator/Corpus';
-import { BackCup } from './regilator/BackCup';
-import { Bolts } from './regilator/Bolts';
-import { FrontCup } from './regilator/FrontCup';
-import { Laying } from './regilator/Laying';
-import { Reduckt } from './regilator/Reduckt';
-import { Screw } from './regilator/Screw';
-import { ScrewBack } from './regilator/ScrewBack';
-import { ThreadCup } from './regilator/ThreadCup';
+import { Controller } from '../regulator/Controller';
+import { Pipes } from '../regulator/Pipes';
+import { Corpus } from '../regulator/Corpus';
+import { BackCup } from '../regulator/BackCup';
+import { Bolts } from '../regulator/Bolts';
+import { FrontCup } from '../regulator/FrontCup';
+import { Laying } from '../regulator/Laying';
+import { Reduckt } from '../regulator/Reduckt';
+import { Screw } from '../regulator/Screw';
+import { ScrewBack } from '../regulator/ScrewBack';
+import { ThreadCup } from '../regulator/ThreadCup';
 
-export const Scene: React.FC = () => {
+interface SceneProp {
+    operationId: string;
+    onActive: (active: boolean) => void;
+}
+
+export const Scene: React.FC<SceneProp> = ({ operationId, onActive }) => {
     const envMap = useEnvironment({files: '/assets/textures/boiler_room_1k.hdr'});
 
     return (
-        <Suspense fallback={null}>
-            <Canvas>
+        <Canvas>
+            <Suspense fallback={null}>
                 <OrbitControls target={[0, 2, -5]} maxPolarAngle={1.45}/>
 
                 <PerspectiveCamera makeDefault fov={20} position={[40, 0, 0]}/>
@@ -31,18 +35,18 @@ export const Scene: React.FC = () => {
 
                 <Environment map={envMap}/>
 
-                <Controller/>
-                <Pipes/>
-                <Corpus/>
-                <BackCup/>
-                <Bolts/>
+                <Controller operationId={operationId} onActive={onActive}/>
+                <Pipes operationId={operationId} onActive={onActive}/>
+                <Corpus operationId={operationId} onActive={onActive}/>
+                <BackCup operationId={operationId} onActive={onActive}/>
+                <Bolts operationId={operationId} onActive={onActive}/>
                 <FrontCup/>
-                <Laying/>
-                <Reduckt/>
-                <Screw/>
-                <ScrewBack/>
-                <ThreadCup/>
-            </Canvas>
-        </Suspense>
+                <Laying operationId={operationId} onActive={onActive}/>
+                <Reduckt operationId={operationId} onActive={onActive}/>
+                <Screw operationId={operationId} onActive={onActive}/>
+                <ScrewBack operationId={operationId} onActive={onActive}/>
+                <ThreadCup operationId={operationId} onActive={onActive}/>
+            </Suspense>
+        </Canvas>
     );
 };

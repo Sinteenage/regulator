@@ -1,26 +1,23 @@
-import React, { MouseEvent, useCallback, useRef, useState } from 'react';
+import React, { MouseEvent, useCallback, useState } from 'react';
 
 import classes from './nav.module.scss';
 
 import { operations } from '../../types';
 
-export const Nav: React.FC = () => {
+interface navProps {
+    onChange: (operationId: string) => void;
+    active: boolean;
+}
 
-    const keyRef = useRef(0);
-
-    const disabledResult = useCallback(() => {
-        return operations.map(item => {
-            return operations[keyRef.current].key !== item.key && item.key;
-        });
-    }, []);
-
-    const [disabled, setDisabled] = useState(disabledResult);
+export const Nav: React.FC<navProps> = ({ onChange, active=false }) => {
+    const [counter, setCounter] = useState(0);
 
     const handleClick = useCallback((event: MouseEvent<HTMLButtonElement>) => {
-        keyRef.current < operations.length - 1 ? keyRef.current++ : keyRef.current = 0;
+        counter < operations.length - 1 ? setCounter(counter + 1) : setCounter(0);
 
-        setDisabled(disabledResult);
-    }, [disabledResult]);
+        onChange(event.currentTarget.id);
+
+    }, [counter, onChange]);
 
     return (
         <nav className={classes.nav}>
@@ -32,7 +29,7 @@ export const Nav: React.FC = () => {
                         key={item.key}
                         id={item.key}
                         onClick={handleClick}
-                        disabled={disabled.includes(item.key)}
+                        disabled={active || operations[counter].key !== item.key}
                     >
                         {item.description}
                     </button>;
