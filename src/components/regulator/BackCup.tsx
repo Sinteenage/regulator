@@ -53,6 +53,11 @@ export const BackCup: React.FC<regProps> = ({operationId, onActive, props}) => {
                 onActive(false);
             }
         }
+        if(operationId === OperationsNames.OPR_9){
+            if(modelRef.current.position.z <= -0.02){
+                modelRef.current.position.z = modelRef.current.position.z + 0.05;
+            }
+        }
     });
 
     return (

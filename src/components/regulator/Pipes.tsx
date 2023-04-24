@@ -55,6 +55,16 @@ export const Pipes: React.FC<regProps> = ({operationId, onActive, props}) => {
                 onActive(false);
             }
         }
+        if(operationId === OperationsNames.OPR_9){
+            if(modelRef.current.position.x <= 0){
+                modelRef.current.position.x = modelRef.current.position.x + 0.1;
+            } else if(modelRef.current.position.z >= 0){
+                modelRef.current.position.z = modelRef.current.position.z - 0.1;
+            } else {
+                operationId = '';
+                onActive(false);
+            }
+        }
     });
 
     return (

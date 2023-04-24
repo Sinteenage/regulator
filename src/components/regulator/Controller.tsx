@@ -73,6 +73,14 @@ export const Controller: React.FC<regProps> = ({operationId, onActive, props}) =
                 onActive(false);
             }
         }
+        if(operationId === OperationsNames.OPR_9 && modelRef.current){
+            if(modelRef.current.position.y >= 0){
+                modelRef.current.position.y = modelRef.current.position.y - 0.1;
+            }
+            if(modelRef.current.position.x <= 0){
+                modelRef.current.position.x = modelRef.current.position.x + 0.1;
+            }
+        }
     });
 
     return (

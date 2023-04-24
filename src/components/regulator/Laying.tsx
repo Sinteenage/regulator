@@ -44,6 +44,13 @@ export const Laying: React.FC<regProps> = ({operationId, onActive, props}) => {
                 onActive(false);
             }
         }
+        if(operationId === OperationsNames.OPR_9){
+            if(modelRef.current.position.z <= -0.02){
+                modelRef.current.position.z = modelRef.current.position.z + 0.1;
+            }else if(modelRef.current.position.y >= 0){
+                modelRef.current.position.y = modelRef.current.position.y - 0.1;
+            } 
+        }
     });
 
     return (

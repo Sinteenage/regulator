@@ -40,7 +40,7 @@ export const Bolts: React.FC<regProps> = ({operationId, onActive, props}) => {
             }
         }
         if(operationId === OperationsNames.OPR_7){
-            if(modelRef.current.position.z <= 0){
+            if(modelRef.current.position.z <= -0.02){
                 modelRef.current.position.z = modelRef.current.position.z + 0.05;
             } else {
                 operationId = '';
@@ -52,6 +52,11 @@ export const Bolts: React.FC<regProps> = ({operationId, onActive, props}) => {
                 modelRef.current.position.y = modelRef.current.position.y + 0.05;
             } else {
                 operationId = '';
+            }
+        }
+        if(operationId === OperationsNames.OPR_9){
+            if(modelRef.current.position.y >= 0){
+                modelRef.current.position.y = modelRef.current.position.y - 0.1;
             }
         }
     });

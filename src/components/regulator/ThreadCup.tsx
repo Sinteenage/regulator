@@ -42,6 +42,11 @@ export const ThreadCup: React.FC<regProps> = ({operationId, onActive, props}) =>
                 operationId = '';
             }
         }
+        if(operationId === OperationsNames.OPR_9 && modelRef.current){
+            if(modelRef.current.position.y >= 0){
+                modelRef.current.position.y = modelRef.current.position.y - 0.1;
+            }
+        }
     });
 
     return (
@@ -57,6 +62,6 @@ export const ThreadCup: React.FC<regProps> = ({operationId, onActive, props}) =>
             </mesh>
         </group>
     );
-}
+};
 
 useGLTF.preload('/assets/models/threadCup.gltf');

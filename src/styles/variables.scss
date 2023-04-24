@@ -25,7 +25,7 @@ $font-weight-small: 200;
 
 @mixin breakpoint($point) {
     @if $point == md {
-        @media (max-width: 780px) {
+        @media (max-width: 600px) {
             @content;
         }
     }
